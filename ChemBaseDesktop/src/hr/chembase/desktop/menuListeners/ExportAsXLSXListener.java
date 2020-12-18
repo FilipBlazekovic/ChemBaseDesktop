@@ -11,27 +11,27 @@ import hr.chembase.desktop.exporters.XLSXExporter;
 import hr.chembase.desktop.gui.PopupMessage;
 
 public class ExportAsXLSXListener implements ActionListener {
-	@Override
-	public void actionPerformed(ActionEvent e)
-	{
-		JFileChooser fileChooser = new JFileChooser();
-		fileChooser.setDialogTitle("Select output location");   
-		int userSelection = fileChooser.showSaveDialog(ChemBase.getChemBaseRoot());
-		
-		if (userSelection == JFileChooser.APPROVE_OPTION)
-		{
-			File outputFile = fileChooser.getSelectedFile();
+    @Override
+    public void actionPerformed(ActionEvent e)
+    {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Select output location");   
+        int userSelection = fileChooser.showSaveDialog(ChemBase.getChemBaseRoot());
+        
+        if (userSelection == JFileChooser.APPROVE_OPTION)
+        {
+            File outputFile = fileChooser.getSelectedFile();
 
-			boolean status;
-			if (ChemBase.fullExportON())
-			    status = XLSXExporter.performFullExport(outputFile);
-			else
-				status = XLSXExporter.performConciseExport(outputFile);
+            boolean status;
+            if (ChemBase.fullExportON())
+                status = XLSXExporter.performFullExport(outputFile);
+            else
+                status = XLSXExporter.performConciseExport(outputFile);
 
-			if (status)
-		    	new PopupMessage("Success!");
-		    else
-		    	new PopupMessage("Something went wrong!");
-		}
-	}
+            if (status)
+                new PopupMessage("Success!");
+            else
+                new PopupMessage("Something went wrong!");
+        }
+    }
 }

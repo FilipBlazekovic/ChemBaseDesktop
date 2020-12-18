@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-
 import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.FillPatternType;
@@ -24,7 +23,7 @@ import hr.chembase.desktop.db.DBConnection;
 
 public class XLSXExporter {
 
-	private static final String[] columnTitlesConcise = {
+    private static final String[] columnTitlesConcise = {
 
             "ID",
             "Chemical Name",
@@ -33,9 +32,9 @@ public class XLSXExporter {
             "Quantity",
             "Unit",
             "Storage Location"
-	};
-	
-	private static final String[] columnTitlesFull = {
+    };
+    
+    private static final String[] columnTitlesFull = {
 
             "ID",
             "Chemical Name",
@@ -48,18 +47,18 @@ public class XLSXExporter {
             "Supplier",
             "Date of Entry",
             "Additional Info"
-	};
+    };
 
-	/* ----------------------------------------------------------------------------------------- */
-	
-	public static boolean performConciseExport(final File outputPath)
-	{
+    /* ----------------------------------------------------------------------------------------- */
+    
+    public static boolean performConciseExport(final File outputPath)
+    {
         boolean STATUS = true;
         FileOutputStream output = null;
         SXSSFWorkbook workbook = null;
 
         PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
+        ResultSet resultSet = null;
         
         try
         {
@@ -84,7 +83,7 @@ public class XLSXExporter {
             titlesStyle.setBorderBottom(BorderStyle.THIN);
             titlesStyle.setBorderLeft(BorderStyle.THIN);
             titlesStyle.setBorderRight(BorderStyle.THIN);
-//         	titlesStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+//          titlesStyle.setVerticalAlignment(VerticalAlignment.CENTER);
             titlesStyle.setWrapText(true);
 
             /* Creating cell style for data columns */
@@ -95,7 +94,7 @@ public class XLSXExporter {
             dataStyle.setBorderRight(BorderStyle.THIN);
             
             /* _____________________________________________ */
-        	
+            
             final SXSSFSheet sheet = workbook.createSheet("ChemBase");
             int rowNumber = 0;
 
@@ -112,28 +111,28 @@ public class XLSXExporter {
             }
 
             
-            /* Write data rows */			
-			/* --------------- */
+            /* Write data rows */           
+            /* --------------- */
             preparedStatement = DBConnection.connection.prepareStatement(ChemBase.getLastPerformedSQL());
-			resultSet = preparedStatement.executeQuery();
+            resultSet = preparedStatement.executeQuery();
 
-			while (resultSet.next())
-			{
-				String tempID 			   = String.valueOf(resultSet.getInt(1));
-				String tempName 		   = resultSet.getString(2);
-				String tempBruttoFormula   = resultSet.getString(3);
-				String tempMolarMass 	   = resultSet.getString(4);
-				String tempQuantity 	   = resultSet.getString(5);
-				String tempQuantityUnit    = resultSet.getString(6);
-				String tempStorageLocation = resultSet.getString(7);
-				
-				if (tempName == null) 			 tempName = "";
-				if (tempBruttoFormula == null) 	 tempBruttoFormula = "";
-				if (tempMolarMass == null) 		 tempMolarMass = "";
-				if (tempQuantity == null) 		 tempQuantity = "";
-				if (tempQuantityUnit == null) 	 tempQuantityUnit = "";
-				if (tempStorageLocation == null) tempStorageLocation = "";
-				
+            while (resultSet.next())
+            {
+                String tempID              = String.valueOf(resultSet.getInt(1));
+                String tempName            = resultSet.getString(2);
+                String tempBruttoFormula   = resultSet.getString(3);
+                String tempMolarMass       = resultSet.getString(4);
+                String tempQuantity        = resultSet.getString(5);
+                String tempQuantityUnit    = resultSet.getString(6);
+                String tempStorageLocation = resultSet.getString(7);
+                
+                if (tempName == null)            tempName = "";
+                if (tempBruttoFormula == null)   tempBruttoFormula = "";
+                if (tempMolarMass == null)       tempMolarMass = "";
+                if (tempQuantity == null)        tempQuantity = "";
+                if (tempQuantityUnit == null)    tempQuantityUnit = "";
+                if (tempStorageLocation == null) tempStorageLocation = "";
+                
                 final Row currentRow = sheet.createRow(rowNumber);
                 rowNumber++;
                 
@@ -160,7 +159,7 @@ public class XLSXExporter {
                 quantityCell.setCellValue(tempQuantity);
                 quantityUnitCell.setCellValue(tempQuantityUnit);
                 storageLocationCell.setCellValue(tempStorageLocation);
-			}
+            }
             
             /* Resizing columns */
             sheet.setColumnWidth(0, 20*256);
@@ -177,10 +176,10 @@ public class XLSXExporter {
         }
         catch (Exception ex)
         {
-        	STATUS = false;
+            STATUS = false;
         }
         finally
-        {        	
+        {           
             try { if (resultSet != null) resultSet.close(); }
             catch (Exception ex) {}
           
@@ -195,23 +194,23 @@ public class XLSXExporter {
             
             if (!STATUS)
             {
-            	try { outputPath.delete(); } catch (Exception ex) {}
+                try { outputPath.delete(); } catch (Exception ex) {}
             }
         }
 
         return STATUS;
-	}
+    }
 
-	/* ----------------------------------------------------------------------------------------- */
-	
-	public static boolean performFullExport(final File outputPath)
-	{
+    /* ----------------------------------------------------------------------------------------- */
+    
+    public static boolean performFullExport(final File outputPath)
+    {
         boolean STATUS = true;
         FileOutputStream output = null;
         SXSSFWorkbook workbook = null;
 
         PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
+        ResultSet resultSet = null;
         
         try
         {
@@ -236,7 +235,7 @@ public class XLSXExporter {
             titlesStyle.setBorderBottom(BorderStyle.THIN);
             titlesStyle.setBorderLeft(BorderStyle.THIN);
             titlesStyle.setBorderRight(BorderStyle.THIN);
-//         	titlesStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+//          titlesStyle.setVerticalAlignment(VerticalAlignment.CENTER);
             titlesStyle.setWrapText(true);
 
             /* Creating cell style for data columns */
@@ -247,7 +246,7 @@ public class XLSXExporter {
             dataStyle.setBorderRight(BorderStyle.THIN);
             
             /* _____________________________________________ */
-        	
+            
             final SXSSFSheet sheet = workbook.createSheet("ChemBase");
             int rowNumber = 0;
 
@@ -264,36 +263,36 @@ public class XLSXExporter {
             }
 
 
-            /* Write data rows */			
-			/* --------------- */
+            /* Write data rows */           
+            /* --------------- */
             preparedStatement = DBConnection.connection.prepareStatement(ChemBase.getLastPerformedSQL());
-			resultSet = preparedStatement.executeQuery();
+            resultSet = preparedStatement.executeQuery();
 
-			while (resultSet.next())
-			{
-				String tempID 			   = String.valueOf(resultSet.getInt(1));
-				String tempName 		   = resultSet.getString(2);
-				String tempBruttoFormula   = resultSet.getString(3);
-				String tempMolarMass 	   = resultSet.getString(4);
-				String tempQuantity 	   = resultSet.getString(5);
-				String tempQuantityUnit    = resultSet.getString(6);
-				String tempStorageLocation = resultSet.getString(7);
-				String tempManufacturer    = resultSet.getString(8);
-				String tempSupplier 	   = resultSet.getString(9);
-				String tempDateOfEntry 	   = resultSet.getString(10);
-				String tempAdditionalInfo  = resultSet.getString(11);
-				
-				if (tempName == null) 			 tempName = "";
-				if (tempBruttoFormula == null) 	 tempBruttoFormula = "";
-				if (tempMolarMass == null) 		 tempMolarMass = "";
-				if (tempQuantity == null) 		 tempQuantity = "";
-				if (tempQuantityUnit == null) 	 tempQuantityUnit = "";
-				if (tempStorageLocation == null) tempStorageLocation = "";
-				if (tempManufacturer == null) 	 tempManufacturer = "";
-				if (tempSupplier == null) 		 tempSupplier = "";
-				if (tempDateOfEntry == null) 	 tempDateOfEntry = "";
-				if (tempAdditionalInfo == null)  tempAdditionalInfo = "";
-				
+            while (resultSet.next())
+            {
+                String tempID              = String.valueOf(resultSet.getInt(1));
+                String tempName            = resultSet.getString(2);
+                String tempBruttoFormula   = resultSet.getString(3);
+                String tempMolarMass       = resultSet.getString(4);
+                String tempQuantity        = resultSet.getString(5);
+                String tempQuantityUnit    = resultSet.getString(6);
+                String tempStorageLocation = resultSet.getString(7);
+                String tempManufacturer    = resultSet.getString(8);
+                String tempSupplier        = resultSet.getString(9);
+                String tempDateOfEntry     = resultSet.getString(10);
+                String tempAdditionalInfo  = resultSet.getString(11);
+                
+                if (tempName == null)            tempName = "";
+                if (tempBruttoFormula == null)   tempBruttoFormula = "";
+                if (tempMolarMass == null)       tempMolarMass = "";
+                if (tempQuantity == null)        tempQuantity = "";
+                if (tempQuantityUnit == null)    tempQuantityUnit = "";
+                if (tempStorageLocation == null) tempStorageLocation = "";
+                if (tempManufacturer == null)    tempManufacturer = "";
+                if (tempSupplier == null)        tempSupplier = "";
+                if (tempDateOfEntry == null)     tempDateOfEntry = "";
+                if (tempAdditionalInfo == null)  tempAdditionalInfo = "";
+                
                 final Row currentRow = sheet.createRow(rowNumber);
                 rowNumber++;
 
@@ -332,7 +331,7 @@ public class XLSXExporter {
                 supplierCell.setCellValue(tempSupplier);
                 dateOfEntryCell.setCellValue(tempDateOfEntry);
                 additionalInfoCell.setCellValue(tempAdditionalInfo);
-			}
+            }
             
             /* Resizing columns */
             sheet.setColumnWidth(0, 20*256);
@@ -353,10 +352,10 @@ public class XLSXExporter {
         }
         catch (Exception ex)
         {
-        	STATUS = false;
+            STATUS = false;
         }
         finally
-        {        	
+        {           
             try { if (resultSet != null) resultSet.close(); }
             catch (Exception ex) {}
           
@@ -371,13 +370,13 @@ public class XLSXExporter {
             
             if (!STATUS)
             {
-            	try { outputPath.delete(); } catch (Exception ex) {}
+                try { outputPath.delete(); } catch (Exception ex) {}
             }
         }
 
         return STATUS;
-	}
-	
-	/* ----------------------------------------------------------------------------------------- */
+    }
+    
+    /* ----------------------------------------------------------------------------------------- */
 
 }

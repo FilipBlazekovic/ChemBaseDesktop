@@ -6,9 +6,9 @@ import java.awt.event.ActionListener;
 import hr.chembase.desktop.gui.LocationsPanel;
 
 public class SetupLocationsListener implements ActionListener {
-	@Override
-	public void actionPerformed(ActionEvent e)
-	{
-		new LocationsPanel();
-	}
+    @Override
+    public void actionPerformed(ActionEvent e)
+    {
+        new LocationsPanel();
+    }
 }

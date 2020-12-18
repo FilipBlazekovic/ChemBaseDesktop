@@ -1,36 +1,27 @@
 
 -- CHEMBASE DATABASE STRUCTURE
 -- ---------------------------
--- UNITS:
-g
-kg
-ml
-l
-cm3
-dm3
-mol
-mmol
 
 CREATE TABLE locations
 (
-  	id INTEGER PRIMARY KEY AUTOINCREMENT,
-  	location TEXT
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    location TEXT
 );
 
 CREATE TABLE chemicals
 (
-  	id INTEGER PRIMARY KEY AUTOINCREMENT,
-  	chemical_name TEXT,
-  	brutto_formula TEXT,
-  	molar_mass TEXT,
-  	quantity_amount REAL,
-	quantity_unit TEXT,
-  	storage_location INTEGER,
-  	manufacturer TEXT,
-  	supplier TEXT,
-  	date_of_entry TEXT,
-  	additional_info TEXT,
-  	FOREIGN KEY(storage_location) REFERENCES locations(id)
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    chemical_name TEXT,
+    brutto_formula TEXT,
+    molar_mass TEXT,
+    quantity_amount REAL,
+    quantity_unit TEXT,
+    storage_location INTEGER,
+    manufacturer TEXT,
+    supplier TEXT,
+    date_of_entry TEXT,
+    additional_info TEXT,
+    FOREIGN KEY(storage_location) REFERENCES locations(id)
 );
 
 CREATE INDEX ix_chemical_name ON chemicals(chemical_name);
