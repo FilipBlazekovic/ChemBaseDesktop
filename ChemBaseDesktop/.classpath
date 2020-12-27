@@ -6,16 +6,16 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/system-admin/libs/java/commons-collections4-4.4.jar"/>
-	<classpathentry kind="lib" path="/home/system-admin/libs/java/commons-compress-1.20.jar"/>
-	<classpathentry kind="lib" path="/home/system-admin/libs/java/commons-logging-1.2.jar"/>
-	<classpathentry kind="lib" path="/home/system-admin/libs/java/fontbox-2.0.21.jar"/>
-	<classpathentry kind="lib" path="/home/system-admin/libs/java/jdom2-2.0.6.jar"/>
-	<classpathentry kind="lib" path="/home/system-admin/libs/java/pdfbox-2.0.21.jar"/>
-	<classpathentry kind="lib" path="/home/system-admin/libs/java/poi-4.1.2.jar"/>
-	<classpathentry kind="lib" path="/home/system-admin/libs/java/poi-ooxml-4.1.2.jar"/>
-	<classpathentry kind="lib" path="/home/system-admin/libs/java/poi-ooxml-schemas-4.1.2.jar"/>
-	<classpathentry kind="lib" path="/home/system-admin/libs/java/sqlite-jdbc-3.32.3.2.jar"/>
-	<classpathentry kind="lib" path="/home/system-admin/libs/java/xmlbeans-3.1.0.jar"/>
+	<classpathentry kind="lib" path="/libs/java/commons-collections4-4.4.jar"/>
+	<classpathentry kind="lib" path="/libs/java/commons-compress-1.20.jar"/>
+	<classpathentry kind="lib" path="/libs/java/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="/libs/java/fontbox-2.0.21.jar"/>
+	<classpathentry kind="lib" path="/libs/java/jdom2-2.0.6.jar"/>
+	<classpathentry kind="lib" path="/libs/java/pdfbox-2.0.21.jar"/>
+	<classpathentry kind="lib" path="/libs/java/poi-4.1.2.jar"/>
+	<classpathentry kind="lib" path="/libs/java/poi-ooxml-4.1.2.jar"/>
+	<classpathentry kind="lib" path="/libs/java/poi-ooxml-schemas-4.1.2.jar"/>
+	<classpathentry kind="lib" path="/libs/java/sqlite-jdbc-3.32.3.2.jar"/>
+	<classpathentry kind="lib" path="/libs/java/xmlbeans-3.1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
